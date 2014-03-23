@@ -1,0 +1,26 @@
+##Creative Tabs
+itemGroup.ExtraTorches=Extra Torches
+item.ExtraTorchesTabPlaceHolder.name=TabsPlaceholder
+
+##Blocks
+tile.blockTorchBlock.name=Torch Block
+tile.blockBlackholeBlockWIP.name=Black Hole Block (WIP)
+tile.blockTorchIngot.name=Torchium Block
+tile.blockBetterCoal.name=Better Coal Block
+
+##Ores
+tile.oreTorchOre.name=Torch Ore
+tile.oreBetterCoal.name=Better Coal Ore
+
+##Items
+item.ItemExtraTorchIngot.name=Torchium Ingot
+item.ItemTorchRod.name=Torchium Rod
+item.ItemExtraTorch.name=Extra Torch
+item.ItemTorchNugget.name=Torchium Nugget
+item.ItemTorchDust.name=Torchium Dust
+
+##Fuels
+item.FuelBetterCoal.name=Better Coal
+
+##Tools
+item.ToolHandHeldTorch.name=HandHeld Torch
