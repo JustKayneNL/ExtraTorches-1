@@ -1,0 +1,26 @@
+##Creative Tabs
+itemGroup.ExtraTorches=Extra Torches
+item.ExtraTorchesTabPlaceHolder.name=Tab-Platzhalter
+
+##Blocks
+tile.blockTorchBlock.name=Fackelblock
+tile.blockBlackholeBlockWIP.name=Schwarzes Loch (WIP)
+tile.blockTorchIngot.name=Taediumblock
+tile.blockBetterCoal.name=Flagrokohleblock
+
+##Ores
+tile.oreTorchOre.name=Taediumerz
+tile.oreBetterCoal.name=Flagrokohleerz
+
+##Items
+item.ItemExtraTorchIngot.name=Taediumbarren
+item.ItemTorchRod.name=Taediumstab
+item.ItemExtraTorch.name=Große Fackel
+item.ItemTorchNugget.name=Taediumnugget
+item.ItemTorchDust.name=Taediumstaub
+
+##Fuels
+item.FuelBetterCoal.name=Flagrokohle
+
+##Tools
+item.ToolHandHeldTorch.name=Tragbare Fackel
