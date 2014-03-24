@@ -5,6 +5,7 @@ bin/
 .settings
 build/
 eclipse/
+models/
 .gradle/
 gradle/
 gradlew

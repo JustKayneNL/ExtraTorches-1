@@ -26,7 +26,7 @@ public class ExtraTorches {
 	
 	public static final String MODID = "ExtraTorches";
 	public static final String NAME = "Extra Torches";
-	public static final String VERSION = "0.2";
+	public static final String VERSION = "1.0";
 	
 	GameRegistry GR = new GameRegistry();
 
@@ -39,25 +39,23 @@ public class ExtraTorches {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		
+		AromaRegistry.register(ExtraTorchesItems.class);
+		AromaRegistry.register(ExtraTorchesCrafting.class);
+		
 		EntityRegistry.registerGlobalEntityID(EntityLightMob.class, "mobLight",
 				300);
-
 		EntityRegistry.addSpawn(EntityLightMob.class, 10, 2, 4,
 				EnumCreatureType.ambient);
-
 		EntityRegistry.findGlobalUniqueEntityId();
 
-		AromaRegistry.register(ExtraTorchesItems.class);
-
+		
+		GameRegistry GR = new GameRegistry();
 		GR.registerFuelHandler((IFuelHandler) ExtraTorchesItems.itemBetterCoal);
-
-		GR.registerWorldGenerator(worldgen1, 1);
-
-		// Recipes
-		// Crafting Recipes
+		
 		GR.addRecipe(new ItemStack(ExtraTorchesItems.torchIngotBlock, 1),
 				new Object[] { "XXX", "XXX", "XXX", 'X',
 						ExtraTorchesItems.itemTorchIngot });
+		
 		GR.addShapelessRecipe(
 				new ItemStack(ExtraTorchesItems.itemTorchIngot, 9),
 				new Object[] { ExtraTorchesItems.torchIngotBlock });
@@ -77,19 +75,22 @@ public class ExtraTorches {
 				new Object[] { "   ", " S ", " X ", 'X',
 						ExtraTorchesItems.itemTorchRod, 'S',
 						ExtraTorchesItems.itemBetterCoal });
+		
 		GR.addRecipe(new ItemStack(ExtraTorchesItems.torchBlock, 1),
 				new Object[] { "XXX", "XXX", "XXX", 'X',
 						ExtraTorchesItems.itemExtraTorch });
+		
+		GR.addShapelessRecipe(new ItemStack(ExtraTorchesItems.itemExtraTorch,
+				9), new Object[] { ExtraTorchesItems.torchBlock});
 
 		GR.addShapelessRecipe(new ItemStack(ExtraTorchesItems.itemTorchNugget,
 				9), new Object[] { ExtraTorchesItems.itemTorchIngot });
-		
+
 		GR.addRecipe(new ItemStack(ExtraTorchesItems.itemTorchIngot, 1),
 				new Object[] { "XXX", "XXX", "XXX", 'X',
 						ExtraTorchesItems.itemTorchNugget });
 
-		GR.addSmelting(new ItemStack(ExtraTorchesItems.itemTorchDust, 9),
-				new ItemStack(ExtraTorchesItems.itemTorchIngot, 1), 0);
+
 
 		GR.addRecipe(new ItemStack(ExtraTorchesItems.toolHandHeldTorch, 1),
 				new Object[] { "RS ", "SX ", "  X", 'X',
@@ -98,15 +99,16 @@ public class ExtraTorches {
 						ExtraTorchesItems.torchBlock });
 
 		// Smelting Recipes
+		GR.addSmelting(new ItemStack(ExtraTorchesItems.itemTorchDust, 9),
+				new ItemStack(ExtraTorchesItems.itemTorchIngot, 1), 0);
+		
 		GR.addSmelting(ExtraTorchesItems.betterCoalOre, new ItemStack(
 				ExtraTorchesItems.itemBetterCoal, 2), 5);
-		
-		GR.addSmelting(ExtraTorchesItems.itemTorchIngot, new ItemStack(
-				ExtraTorchesItems.oreTorchOre, 1), 10);
-		
-		String Update = CheckUpdate.checkUpdate();
-		System.out.println("ExtraTorches: " + Update);
 
+		GR.addSmelting(ExtraTorchesItems.oreTorchOre, new ItemStack(
+				ExtraTorchesItems.itemTorchIngot, 1), 10);
+
+		GR.registerWorldGenerator(worldgen1, 1);
 	}
 
 }

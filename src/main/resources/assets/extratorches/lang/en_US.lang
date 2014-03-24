@@ -9,7 +9,7 @@ tile.blockTorchIngot.name=Torchium Block
 tile.blockBetterCoal.name=Better Coal Block
 
 ##Ores
-tile.oreTorchOre.name=Torch Ore
+tile.oreTorchOre.name=Torchium Ore
 tile.oreBetterCoal.name=Better Coal Ore
 
 ##Items

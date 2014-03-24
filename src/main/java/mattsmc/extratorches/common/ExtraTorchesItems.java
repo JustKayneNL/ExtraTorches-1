@@ -15,47 +15,55 @@ import mattsmc.extratorches.items.ItemTorchRod;
 import mattsmc.extratorches.tools.ToolHandHeldTorch;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
+import cpw.mods.fml.common.IFuelHandler;
+import cpw.mods.fml.common.registry.GameRegistry;
 
-public class ExtraTorchesItems {	
-	public static ToolMaterial TorchMaterial = EnumHelper.addToolMaterial("Torchinum", 3, 1300, 10.0F, 2F, 10);
-	//Block Registration
-	
-	//public static Block invisLightBlock = new InvisLightBlock();
-	//public static Block ExtraTorchesBench = new ExtraTorchesWorkbench();
-	
-	//Ores
+public class ExtraTorchesItems {
+	public static ToolMaterial TorchMaterial = EnumHelper.addToolMaterial(
+			"Torchinum", 3, 1300, 10.0F, 2F, 10);
+	// Block Registration
+
+	// public static Block invisLightBlock = new InvisLightBlock();
+	// public static Block ExtraTorchesBench = new ExtraTorchesWorkbench();
+
+	// Ores
 	public static Block betterCoalOre = new BetterCoalOre();
-	
+
 	public static Block oreTorchOre = new TorchOre();
-	
-	//Blocks
+
+	// Blocks
 	public static Block torchBlock = new TorchBlock();
 
 	public static Block blackholeBlock = new BlackholeBlock();
-	
+
 	public static Block torchIngotBlock = new TorchIngotBlock();
-	
+
 	public static Block betterCoalBlock = new BetterCoalBlock();
 
-	//Tools
+	// Tools
 	public static Item toolHandHeldTorch = new ToolHandHeldTorch();
-	
-	//Items	
+
+	// Items
 	public static Item itemTorchNugget = new ItemTorchNugget();
-	
+
 	public static Item itemTorchDust = new ItemTorchDust();
-	
+
 	public static Item itemTorchRod = new ItemTorchRod();
-	
+
 	public static Item itemBetterCoal = new ItemBetterCoal();
-	
+
 	public static Item itemExtraTorch = new ItemExtraTorch();
-	
+
 	public static Item itemTorchIngot = new ItemTorchIngot();
+
+	public static Item itemExtraTorchesTabPlaceHolder = new Item()
+			.setTextureName("ExtraTorches:itemCreativeExtraTorches")
+			.setUnlocalizedName("ExtraTorchesTabPlaceHolder");
 	
-	public static Item itemExtraTorchesTabPlaceHolder = new Item().setTextureName(
-			"ExtraTorches:itemCreativeExtraTorches").setUnlocalizedName(
-			"ExtraTorchesTabPlaceHolder");
+	public void init(){
+
+	}
 }

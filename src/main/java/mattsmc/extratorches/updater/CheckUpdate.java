@@ -17,13 +17,14 @@ public class CheckUpdate {
     public static int update = 0;
 
     public static String checkUpdate(){
+                currentVersion = TFile.readFile("./VERSION.txt");
                 try{
-                    URL url = new URL("https://www.dropbox.com/s/u0t3frunpsxk9f6/VERSION.txt");
+                    URL url = new URL("https://raw.githubusercontent.com/MattsMc/ExtraTorches/master/VERSION.txt");
                     ReadableByteChannel rbc = Channels.newChannel(url.openStream());
                     FileOutputStream fos = new FileOutputStream("./newVERSION.txt");
                     fos.getChannel().transferFrom(rbc, 0, 1 << 24);
                     fos.close();
-                    if(!ExtraTorches.VERSION.equals(newVersion)){
+                    if(!currentVersion.equals(newVersion)){
                         newVersion = TFile.readFile("./newVERSION.txt");
                         return newVersion; }
                 }catch (IOException e) {
