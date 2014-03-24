@@ -18,7 +18,11 @@ buildscript {
 apply plugin: 'forge'
 
 version = "1.0"
-group= "mattsmc.extratorches.common" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+
+if (ENV.BUILD_NUMBER)
+	version = "${version}.b${ENV.BUILD_NUMBER}"
+
+group= "mattsmc.extratorches" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ExtraTorches"
 
 minecraft {
