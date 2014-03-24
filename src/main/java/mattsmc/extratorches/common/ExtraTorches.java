@@ -3,19 +3,26 @@ package mattsmc.extratorches.common;
 import mattsmc.extratorches.creativetab.ExtraTorchesTab;
 import mattsmc.extratorches.mob.entity.EntityLightMob;
 import mattsmc.extratorches.proxy.CommonProxy;
-import mattsmc.extratorches.updater.CheckUpdate;
+import mattsmc.extratorches.tools.ToolHandHeldTorch;
 import mattsmc.extratorches.worldgen.ExtraTorchesGeneralWG;
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.event.ClickEvent.Action;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraftforge.common.util.EnumHelper;
+import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import aroma1997.core.util.AromaRegistry;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -23,11 +30,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ExtraTorches {
 	@SidedProxy(clientSide = "mattsmc.extratorches.proxy.ClientProxy", serverSide = "mattsmc.extratorches.proxy.CommonProxy")
 	public static CommonProxy proxy;
-	
+
 	public static final String MODID = "ExtraTorches";
 	public static final String NAME = "Extra Torches";
 	public static final String VERSION = "1.0";
-	
+
 	GameRegistry GR = new GameRegistry();
 
 	public static ExtraTorchesGeneralWG worldgen1 = new ExtraTorchesGeneralWG();
@@ -35,27 +42,29 @@ public class ExtraTorches {
 	// Creative Tabs//
 	public static CreativeTabs ExtraTorchesTab = new ExtraTorchesTab(
 			"ExtraTorches");
+	
+
+	Minecraft mc = FMLClientHandler.instance().getClient();;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		
+
 		AromaRegistry.register(ExtraTorchesItems.class);
 		AromaRegistry.register(ExtraTorchesCrafting.class);
-		
+
 		EntityRegistry.registerGlobalEntityID(EntityLightMob.class, "mobLight",
 				300);
 		EntityRegistry.addSpawn(EntityLightMob.class, 10, 2, 4,
 				EnumCreatureType.ambient);
 		EntityRegistry.findGlobalUniqueEntityId();
 
-		
 		GameRegistry GR = new GameRegistry();
 		GR.registerFuelHandler((IFuelHandler) ExtraTorchesItems.itemBetterCoal);
-		
+
 		GR.addRecipe(new ItemStack(ExtraTorchesItems.torchIngotBlock, 1),
 				new Object[] { "XXX", "XXX", "XXX", 'X',
 						ExtraTorchesItems.itemTorchIngot });
-		
+
 		GR.addShapelessRecipe(
 				new ItemStack(ExtraTorchesItems.itemTorchIngot, 9),
 				new Object[] { ExtraTorchesItems.torchIngotBlock });
@@ -75,13 +84,14 @@ public class ExtraTorches {
 				new Object[] { "   ", " S ", " X ", 'X',
 						ExtraTorchesItems.itemTorchRod, 'S',
 						ExtraTorchesItems.itemBetterCoal });
-		
+
 		GR.addRecipe(new ItemStack(ExtraTorchesItems.torchBlock, 1),
 				new Object[] { "XXX", "XXX", "XXX", 'X',
 						ExtraTorchesItems.itemExtraTorch });
-		
-		GR.addShapelessRecipe(new ItemStack(ExtraTorchesItems.itemExtraTorch,
-				9), new Object[] { ExtraTorchesItems.torchBlock});
+
+		GR.addShapelessRecipe(
+				new ItemStack(ExtraTorchesItems.itemExtraTorch, 9),
+				new Object[] { ExtraTorchesItems.torchBlock });
 
 		GR.addShapelessRecipe(new ItemStack(ExtraTorchesItems.itemTorchNugget,
 				9), new Object[] { ExtraTorchesItems.itemTorchIngot });
@@ -89,8 +99,6 @@ public class ExtraTorches {
 		GR.addRecipe(new ItemStack(ExtraTorchesItems.itemTorchIngot, 1),
 				new Object[] { "XXX", "XXX", "XXX", 'X',
 						ExtraTorchesItems.itemTorchNugget });
-
-
 
 		GR.addRecipe(new ItemStack(ExtraTorchesItems.toolHandHeldTorch, 1),
 				new Object[] { "RS ", "SX ", "  X", 'X',
@@ -101,7 +109,7 @@ public class ExtraTorches {
 		// Smelting Recipes
 		GR.addSmelting(new ItemStack(ExtraTorchesItems.itemTorchDust, 9),
 				new ItemStack(ExtraTorchesItems.itemTorchIngot, 1), 0);
-		
+
 		GR.addSmelting(ExtraTorchesItems.betterCoalOre, new ItemStack(
 				ExtraTorchesItems.itemBetterCoal, 2), 5);
 

@@ -29,11 +29,9 @@ public class ExtraTorchesGeneralWG implements IWorldGenerator {
 	}
 
 	public void generateNether(World world, Random random, int i, int j) {
-		System.out.println("ExtraTorches: Nether Gen from ET Ores are not complete");
 	}
 	
 	public void generateEnd(World world, Random random, int i, int j) { 
-		System.out.println("ExtraTorches: End Gen from ET Ores are not complete");
 	}
 
 	public static void generateOre(World world, Block block, int cycle,

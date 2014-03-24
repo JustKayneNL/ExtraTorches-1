@@ -7,8 +7,6 @@ build/
 eclipse/
 models/
 .gradle/
-gradle/
-gradlew
-gradlew.bat
+
 
 

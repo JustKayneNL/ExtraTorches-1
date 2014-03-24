@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 
-public class ItemBetterCoal extends Item implements IFuelHandler{
+public class ItemBetterCoal extends Item implements IFuelHandler {
 	public ItemBetterCoal() {
 		setCreativeTab(ExtraTorches.ExtraTorchesTab);
 		setUnlocalizedName("FuelBetterCoal");
@@ -16,7 +16,7 @@ public class ItemBetterCoal extends Item implements IFuelHandler{
 
 
 	public int getBurnTime(ItemStack fuel) {
-		return 3000;
+		return 3200;
 	}
 
 }
