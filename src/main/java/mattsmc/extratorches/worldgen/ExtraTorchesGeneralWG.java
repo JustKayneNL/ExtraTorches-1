@@ -22,18 +22,18 @@ public class ExtraTorchesGeneralWG implements IWorldGenerator {
 	}
 
 	public void generateSurface(World world, Random random, int x, int z) {
-		this.generateOre(world, ExtraTorchesItems.betterCoalOre, 12, 8, random,
+		this.generateOre(world, ExtraTorchesItems.betterCoalOre, 10, 7, random,
 				x, z, 80);
-		this.generateOre(world, ExtraTorchesItems.oreTorchOre, 17, 6, random,
+		this.generateOre(world, ExtraTorchesItems.oreTorchOre, 9, 5, random,
 				x, z, 50);
 	}
 
 	public void generateNether(World world, Random random, int i, int j) {
-		System.out.println("ExtraTorches:");
+		System.out.println("ExtraTorches: Nether Gen from ET Ores are not complete");
 	}
 	
 	public void generateEnd(World world, Random random, int i, int j) { 
-		
+		System.out.println("ExtraTorches: End Gen from ET Ores are not complete");
 	}
 
 	public static void generateOre(World world, Block block, int cycle,
