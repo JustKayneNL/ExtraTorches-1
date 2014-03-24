@@ -3,26 +3,24 @@ package mattsmc.extratorches.common;
 import mattsmc.extratorches.creativetab.ExtraTorchesTab;
 import mattsmc.extratorches.mob.entity.EntityLightMob;
 import mattsmc.extratorches.proxy.CommonProxy;
-import mattsmc.extratorches.tools.ToolHandHeldTorch;
 import mattsmc.extratorches.worldgen.ExtraTorchesGeneralWG;
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.event.ClickEvent.Action;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.common.MinecraftForge;
+
+import org.apache.logging.log4j.Logger;
+
+import aroma1997.core.log.LogHelper;
 import aroma1997.core.util.AromaRegistry;
+import aroma1997.core.version.VersionCheck;
 import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.IFuelHandler;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -34,6 +32,8 @@ public class ExtraTorches {
 	public static final String MODID = "ExtraTorches";
 	public static final String NAME = "Extra Torches";
 	public static final String VERSION = "1.0";
+	
+	public static Logger logger = LogHelper.genNewLogger(MODID);
 
 	GameRegistry GR = new GameRegistry();
 
@@ -43,7 +43,6 @@ public class ExtraTorches {
 	public static CreativeTabs ExtraTorchesTab = new ExtraTorchesTab(
 			"ExtraTorches");
 	
-
 	Minecraft mc = FMLClientHandler.instance().getClient();;
 
 	@EventHandler
@@ -57,66 +56,18 @@ public class ExtraTorches {
 		EntityRegistry.addSpawn(EntityLightMob.class, 10, 2, 4,
 				EnumCreatureType.ambient);
 		EntityRegistry.findGlobalUniqueEntityId();
-
-		GameRegistry GR = new GameRegistry();
-		GR.registerFuelHandler((IFuelHandler) ExtraTorchesItems.itemBetterCoal);
-
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.torchIngotBlock, 1),
-				new Object[] { "XXX", "XXX", "XXX", 'X',
-						ExtraTorchesItems.itemTorchIngot });
-
-		GR.addShapelessRecipe(
-				new ItemStack(ExtraTorchesItems.itemTorchIngot, 9),
-				new Object[] { ExtraTorchesItems.torchIngotBlock });
-
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.betterCoalBlock, 1),
-				new Object[] { "XXX", "XXX", "XXX", 'X',
-						ExtraTorchesItems.itemBetterCoal });
-		GR.addShapelessRecipe(
-				new ItemStack(ExtraTorchesItems.itemBetterCoal, 9),
-				new Object[] { ExtraTorchesItems.betterCoalBlock });
-
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.itemTorchRod, 1),
-				new Object[] { "   ", " X ", " X ", 'X',
-						ExtraTorchesItems.itemTorchIngot });
-
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.itemExtraTorch, 2),
-				new Object[] { "   ", " S ", " X ", 'X',
-						ExtraTorchesItems.itemTorchRod, 'S',
-						ExtraTorchesItems.itemBetterCoal });
-
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.torchBlock, 1),
-				new Object[] { "XXX", "XXX", "XXX", 'X',
-						ExtraTorchesItems.itemExtraTorch });
-
-		GR.addShapelessRecipe(
-				new ItemStack(ExtraTorchesItems.itemExtraTorch, 9),
-				new Object[] { ExtraTorchesItems.torchBlock });
-
-		GR.addShapelessRecipe(new ItemStack(ExtraTorchesItems.itemTorchNugget,
-				9), new Object[] { ExtraTorchesItems.itemTorchIngot });
-
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.itemTorchIngot, 1),
-				new Object[] { "XXX", "XXX", "XXX", 'X',
-						ExtraTorchesItems.itemTorchNugget });
-
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.toolHandHeldTorch, 1),
-				new Object[] { "RS ", "SX ", "  X", 'X',
-						ExtraTorchesItems.itemTorchRod, 'S',
-						ExtraTorchesItems.torchIngotBlock, 'R',
-						ExtraTorchesItems.torchBlock });
-
-		// Smelting Recipes
-		GR.addSmelting(new ItemStack(ExtraTorchesItems.itemTorchDust, 9),
-				new ItemStack(ExtraTorchesItems.itemTorchIngot, 1), 0);
-
-		GR.addSmelting(ExtraTorchesItems.betterCoalOre, new ItemStack(
-				ExtraTorchesItems.itemBetterCoal, 2), 5);
-
-		GR.addSmelting(ExtraTorchesItems.oreTorchOre, new ItemStack(
-				ExtraTorchesItems.itemTorchIngot, 1), 10);
+		
+		
 
 		GR.registerWorldGenerator(worldgen1, 1);
+	}
+	
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		EventListener el = new EventListener();
+		FMLCommonHandler.instance().bus().register(el);
+		MinecraftForge.EVENT_BUS.register(el);
+		VersionCheck.registerVersionChecker(MODID, VERSION, "https://dl.dropboxusercontent.com/s/rlck89aub6tl6i8/VersionCheck.xml?dl=1&token_hash=AAGRUWWpB9iwn7JF0TI6kKTqJFgSu-4UHF6Gn5woFcYg1Q", "https://tinyurl.com/MattsMods");
 	}
 
 }
