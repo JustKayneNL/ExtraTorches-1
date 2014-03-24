@@ -15,6 +15,8 @@ buildscript {
     }
 }
 
+ENV = System.getenv()
+
 apply plugin: 'forge'
 
 version = "1.0"
