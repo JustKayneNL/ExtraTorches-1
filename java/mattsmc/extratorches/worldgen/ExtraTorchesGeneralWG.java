@@ -22,9 +22,9 @@ public class ExtraTorchesGeneralWG implements IWorldGenerator {
 	}
 
 	public void generateSurface(World world, Random random, int x, int z) {
-		this.generateOre(world, ExtraTorchesItems.betterCoalOre, 10, 7, random,
+		generateOre(world, ExtraTorchesItems.betterCoalOre, 10, 7, random,
 				x, z, 80);
-		this.generateOre(world, ExtraTorchesItems.oreTorchOre, 9, 5, random,
+		generateOre(world, ExtraTorchesItems.oreTorchOre, 9, 5, random,
 				x, z, 50);
 	}
 

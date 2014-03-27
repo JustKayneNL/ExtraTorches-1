@@ -35,8 +35,6 @@ public class ExtraTorches {
 	
 	public static Logger logger = LogHelper.genNewLogger(MODID);
 
-	GameRegistry GR = new GameRegistry();
-
 	public static ExtraTorchesGeneralWG worldgen1 = new ExtraTorchesGeneralWG();
 
 	// Creative Tabs//
@@ -52,14 +50,14 @@ public class ExtraTorches {
 		AromaRegistry.register(ExtraTorchesCrafting.class);
 
 		EntityRegistry.registerGlobalEntityID(EntityLightMob.class, "mobLight",
-				300);
+				EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.addSpawn(EntityLightMob.class, 10, 2, 4,
 				EnumCreatureType.ambient);
 		EntityRegistry.findGlobalUniqueEntityId();
 		
 		
 
-		GR.registerWorldGenerator(worldgen1, 1);
+		GameRegistry.registerWorldGenerator(worldgen1, 1);
 	}
 	
 	@EventHandler

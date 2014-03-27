@@ -63,7 +63,7 @@ public class ExtraTorchesItems {
 			.setTextureName("ExtraTorches:itemCreativeExtraTorches")
 			.setUnlocalizedName("ExtraTorchesTabPlaceHolder");
 	
-	public void init(){
+	public static void init(){
 
 	}
 }
