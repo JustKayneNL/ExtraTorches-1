@@ -1,13 +1,21 @@
+//Extra Torches by MattsMc is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License.
+//Based on a work at https://github.com/M...c/ExtraTorches.
+
 package mattsmc.extratorches.common;
 
 import mattsmc.extratorches.creativetab.ExtraTorchesTab;
 import mattsmc.extratorches.mob.entity.EntityLightMob;
 import mattsmc.extratorches.proxy.CommonProxy;
+import mattsmc.extratorches.utils.MobEgg;
 import mattsmc.extratorches.worldgen.ExtraTorchesGeneralWG;
 import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityList;
+import net.minecraft.entity.EntityList.EntityEggInfo;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.entity.EntityList.EntityEggInfo;
 
 import org.apache.logging.log4j.Logger;
 
@@ -31,8 +39,8 @@ public class ExtraTorches {
 
 	public static final String MODID = "ExtraTorches";
 	public static final String NAME = "Extra Torches";
-	public static final String VERSION = "1.0";
-	
+	public static final String VERSION = "1.0.1";
+
 	public static Logger logger = LogHelper.genNewLogger(MODID);
 
 	public static ExtraTorchesGeneralWG worldgen1 = new ExtraTorchesGeneralWG();
@@ -40,7 +48,7 @@ public class ExtraTorches {
 	// Creative Tabs//
 	public static CreativeTabs ExtraTorchesTab = new ExtraTorchesTab(
 			"ExtraTorches");
-	
+
 	Minecraft mc = FMLClientHandler.instance().getClient();;
 
 	@EventHandler
@@ -49,23 +57,28 @@ public class ExtraTorches {
 		AromaRegistry.register(ExtraTorchesItems.class);
 		AromaRegistry.register(ExtraTorchesCrafting.class);
 
+		EntityRegistry.findGlobalUniqueEntityId();
 		EntityRegistry.registerGlobalEntityID(EntityLightMob.class, "mobLight",
 				EntityRegistry.findGlobalUniqueEntityId());
 		EntityRegistry.addSpawn(EntityLightMob.class, 10, 2, 4,
 				EnumCreatureType.ambient);
-		EntityRegistry.findGlobalUniqueEntityId();
-		
-		
+		MobEgg.registerEntityEgg(EntityLightMob.class, 0xFFCC00, 0xFFFF00);
 
 		GameRegistry.registerWorldGenerator(worldgen1, 1);
 	}
-	
+
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		EventListener el = new EventListener();
 		FMLCommonHandler.instance().bus().register(el);
 		MinecraftForge.EVENT_BUS.register(el);
-		VersionCheck.registerVersionChecker(MODID, VERSION, "https://dl.dropboxusercontent.com/s/rlck89aub6tl6i8/VersionCheck.xml?dl=1&token_hash=AAGRUWWpB9iwn7JF0TI6kKTqJFgSu-4UHF6Gn5woFcYg1Q", "https://tinyurl.com/MattsMods");
-	}
+		VersionCheck
+				.registerVersionChecker(
+						MODID,
+						VERSION,
+						"https://dl.dropboxusercontent.com/s/rlck89aub6tl6i8/VersionCheck.xml?dl=1&token_hash=AAGRUWWpB9iwn7JF0TI6kKTqJFgSu-4UHF6Gn5woFcYg1Q",
+						"https://tinyurl.com/MattsMods");
 
+		proxy.renderInformation();
+	}
 }

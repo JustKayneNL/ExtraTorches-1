@@ -1,13 +1,14 @@
+//Extra Torches by MattsMc is licensed under a Creative Commons Attribution-NoDerivatives 4.0 International License.
+//Based on a work at https://github.com/M...c/ExtraTorches.
+
 package mattsmc.extratorches.worldgen;
 
 import java.util.Random;
 
-import mattsmc.extratorches.common.ExtraTorches;
 import mattsmc.extratorches.common.ExtraTorchesItems;
-import net.minecraft.block.Block;
+import mattsmc.extratorches.utils.WorldGen;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 
 public class ExtraTorchesGeneralWG implements IWorldGenerator {
@@ -22,26 +23,17 @@ public class ExtraTorchesGeneralWG implements IWorldGenerator {
 	}
 
 	public void generateSurface(World world, Random random, int x, int z) {
-		generateOre(world, ExtraTorchesItems.betterCoalOre, 10, 7, random,
+		WorldGen.generateOre(world, ExtraTorchesItems.betterCoalOre, 10, 7, random,
 				x, z, 80);
-		generateOre(world, ExtraTorchesItems.oreTorchOre, 9, 5, random,
+		WorldGen.generateOre(world, ExtraTorchesItems.oreTorchOre, 9, 5, random,
 				x, z, 50);
 	}
 
 	public void generateNether(World world, Random random, int i, int j) {
+		//Nope
 	}
 	
 	public void generateEnd(World world, Random random, int i, int j) { 
-	}
-
-	public static void generateOre(World world, Block block, int cycle,
-			int amount, Random random, int x, int z, int yran) {
-		for (int i = 0; i < cycle; i++) {
-			int Xcords = x + random.nextInt(16);
-			int Ycords = random.nextInt(yran);
-			int Zcords = z + random.nextInt(16);
-			new WorldGenMinable(block, amount).generate(world, random, Xcords,
-					Ycords, Zcords);
-		}
+		//Nope
 	}
 }
