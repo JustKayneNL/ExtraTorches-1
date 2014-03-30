@@ -25,48 +25,63 @@ import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ExtraTorchesItems {
-	public static ToolMaterial TorchMaterial = EnumHelper.addToolMaterial(
-			"Torchinum", 3, 1300, 10.0F, 2F, 10);
-	// Block Registration
 
-	// public static Block invisLightBlock = new InvisLightBlock();
-	// public static Block ExtraTorchesBench = new ExtraTorchesWorkbench();
+	public static Block betterCoalOre;
+	public static Block oreTorchOre;
+	public static Block torchBlock;
+	public static Block blackholeBlock;
+	public static Block torchIngotBlock;
+	public static Block betterCoalBlock;
+	public static Item toolHandHeldTorch;
+	public static Item itemTorchNugget;
+	public static Item itemTorchDust;
+	public static Item itemTorchRod;
+	public static Item itemBetterCoal;
+	public static Item itemExtraTorch;
+	public static Item itemTorchIngot;
+	public static Item itemExtraTorchesTabPlaceHolder;
+	public static ToolMaterial TorchMaterial;
 
-	// Ores
-	public static Block betterCoalOre = new BetterCoalOre();
+	public static void loadItems() {
+		TorchMaterial = EnumHelper.addToolMaterial("Torchinum", 3, 1300, 10.0F,
+				2F, 10);
 
-	public static Block oreTorchOre = new TorchOre();
+		// public static Block invisLightBlock = new InvisLightBlock();
+		// public static Block ExtraTorchesBench = new ExtraTorchesWorkbench();
 
-	// Blocks
-	public static Block torchBlock = new TorchBlock();
+		// Ores
+		betterCoalOre = new BetterCoalOre();
 
-	public static Block blackholeBlock = new BlackholeBlock();
+		oreTorchOre = new TorchOre();
 
-	public static Block torchIngotBlock = new TorchIngotBlock();
+		// Blocks
+		torchBlock = new TorchBlock();
 
-	public static Block betterCoalBlock = new BetterCoalBlock();
+		blackholeBlock = new BlackholeBlock();
 
-	// Tools
-	public static Item toolHandHeldTorch = new ToolHandHeldTorch();
+		torchIngotBlock = new TorchIngotBlock();
 
-	// Items
-	public static Item itemTorchNugget = new ItemTorchNugget();
+		betterCoalBlock = new BetterCoalBlock();
 
-	public static Item itemTorchDust = new ItemTorchDust();
+		// Tools
+		toolHandHeldTorch = new ToolHandHeldTorch();
 
-	public static Item itemTorchRod = new ItemTorchRod();
+		// Items
+		itemTorchNugget = new ItemTorchNugget();
 
-	public static Item itemBetterCoal = new ItemBetterCoal();
+		itemTorchDust = new ItemTorchDust();
 
-	public static Item itemExtraTorch = new ItemExtraTorch();
+		itemTorchRod = new ItemTorchRod();
 
-	public static Item itemTorchIngot = new ItemTorchIngot();
+		itemBetterCoal = new ItemBetterCoal();
 
-	public static Item itemExtraTorchesTabPlaceHolder = new Item()
-			.setTextureName("ExtraTorches:itemCreativeExtraTorches")
-			.setUnlocalizedName("ExtraTorchesTabPlaceHolder");
-	
-	public static void init(){
+		itemExtraTorch = new ItemExtraTorch();
+
+		itemTorchIngot = new ItemTorchIngot();
+
+		itemExtraTorchesTabPlaceHolder = new Item().setTextureName(
+				"ExtraTorches:itemCreativeExtraTorches").setUnlocalizedName(
+				"ExtraTorchesTabPlaceHolder");
 
 	}
 }

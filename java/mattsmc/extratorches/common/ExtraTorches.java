@@ -52,10 +52,8 @@ public class ExtraTorches {
 	Minecraft mc = FMLClientHandler.instance().getClient();;
 
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
-
-		AromaRegistry.register(ExtraTorchesItems.class);
-		AromaRegistry.register(ExtraTorchesCrafting.class);
+	public void preInit(FMLPreInitializationEvent event) {		
+		ExtraTorchesItems.loadItems();
 
 		EntityRegistry.findGlobalUniqueEntityId();
 		EntityRegistry.registerGlobalEntityID(EntityLightMob.class, "mobLight",
