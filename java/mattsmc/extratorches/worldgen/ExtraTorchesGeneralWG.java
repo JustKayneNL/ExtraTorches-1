@@ -5,7 +5,7 @@ package mattsmc.extratorches.worldgen;
 
 import java.util.Random;
 
-import mattsmc.extratorches.common.ExtraTorchesItems;
+import mattsmc.extratorches.common.Registry;
 import mattsmc.extratorches.utils.WorldGen;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -23,9 +23,9 @@ public class ExtraTorchesGeneralWG implements IWorldGenerator {
 	}
 
 	public void generateSurface(World world, Random random, int x, int z) {
-		WorldGen.generateOre(world, ExtraTorchesItems.betterCoalOre, 10, 7, random,
+		WorldGen.generateOre(world, Registry.betterCoalOre, 10, 7, random,
 				x, z, 80);
-		WorldGen.generateOre(world, ExtraTorchesItems.oreTorchOre, 9, 5, random,
+		WorldGen.generateOre(world, Registry.oreTorchOre, 9, 5, random,
 				x, z, 50);
 	}
 

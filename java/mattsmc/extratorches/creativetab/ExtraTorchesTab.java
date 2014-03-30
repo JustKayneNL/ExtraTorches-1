@@ -3,8 +3,7 @@
 
 package mattsmc.extratorches.creativetab;
 
-import mattsmc.extratorches.common.ExtraTorches;
-import mattsmc.extratorches.common.ExtraTorchesItems;
+import mattsmc.extratorches.common.Registry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -16,7 +15,7 @@ public class ExtraTorchesTab extends CreativeTabs{
 
 	@Override
 	public Item getTabIconItem() {
-		return ExtraTorchesItems.itemExtraTorchesTabPlaceHolder;
+		return Registry.itemExtraTorchesTabPlaceHolder;
 	}
 
 }

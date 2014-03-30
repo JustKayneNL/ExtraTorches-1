@@ -6,13 +6,8 @@ package mattsmc.extratorches.block;
 import java.util.Random;
 
 import mattsmc.extratorches.common.ExtraTorches;
-import mattsmc.extratorches.common.ExtraTorchesItems;
-import net.minecraft.block.Block;
+import mattsmc.extratorches.common.Registry;
 import net.minecraft.block.BlockOre;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.world.IBlockAccess;
 
@@ -20,7 +15,7 @@ public class BetterCoalOre extends BlockOre {
 	
     public Item getItemDropped(int i, Random random, int j)
     {
-        return ExtraTorchesItems.itemBetterCoal;
+        return Registry.itemBetterCoal;
     }
     
     public int quantityDropped(Random rand){

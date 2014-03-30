@@ -3,12 +3,8 @@
 
 package mattsmc.extratorches.block;
 
-import java.util.Random;
-
 import mattsmc.extratorches.common.ExtraTorches;
-import mattsmc.extratorches.common.ExtraTorchesItems;
 import net.minecraft.block.BlockOre;
-import net.minecraft.item.Item;
 
 public class TorchOre extends BlockOre {
 
