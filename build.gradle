@@ -19,10 +19,10 @@ ENV = System.getenv()
 
 apply plugin: 'forge'
 
-version = "1.0.1"
+version = "#1"
 
 if (ENV.BUILD_NUMBER)
-	version = "${version}.b${ENV.BUILD_NUMBER}"
+	version = "#${ENV.BUILD_NUMBER}"
 
 group= "mattsmc.extratorches" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ExtraTorches"
