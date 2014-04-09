@@ -6,8 +6,6 @@ package mattsmc.extratorches.block;
 import mattsmc.extratorches.common.ExtraTorches;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.world.World;
 
 public class TorchBlock extends Block {
 

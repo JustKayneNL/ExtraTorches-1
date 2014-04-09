@@ -3,12 +3,10 @@
 
 package mattsmc.extratorches.proxy;
 
-import net.minecraftforge.oredict.OreDictionary;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.relauncher.Side;
 import mattsmc.extratorches.mob.LightMob;
 import mattsmc.extratorches.mob.entity.EntityLightMob;
 import mattsmc.extratorches.mob.render.RenderLightMob;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 

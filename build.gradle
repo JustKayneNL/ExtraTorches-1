@@ -19,7 +19,7 @@ ENV = System.getenv()
 
 apply plugin: 'forge'
 
-version = "#1"
+version = "#12"
 
 if (ENV.BUILD_NUMBER)
 	version = "#${ENV.BUILD_NUMBER}"

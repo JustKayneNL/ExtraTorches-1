@@ -16,8 +16,8 @@ import mattsmc.extratorches.tools.ToolHandHeldTorch;
 import mattsmc.extratorches.utils.RegisterHelper;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -54,7 +54,6 @@ public class Registry {
 	public static Item itemExtraTorchesTabPlaceHolder;
 
 	public static void loadItems() {
-		// public static Block invisLightBlock = new InvisLightBlock();
 		// public static Block ExtraTorchesBench = new ExtraTorchesWorkbench();
 
 		// Ores

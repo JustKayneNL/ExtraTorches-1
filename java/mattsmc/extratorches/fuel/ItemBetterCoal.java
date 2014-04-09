@@ -3,11 +3,10 @@
 
 package mattsmc.extratorches.fuel;
 
-import cpw.mods.fml.common.IFuelHandler;
 import mattsmc.extratorches.common.ExtraTorches;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.IBlockAccess;
+import cpw.mods.fml.common.IFuelHandler;
 
 public class ItemBetterCoal extends Item implements IFuelHandler {
 	public ItemBetterCoal() {
