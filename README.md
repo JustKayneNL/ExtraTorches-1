@@ -3,7 +3,7 @@ Extra Torches
 
 A Minecraft w/ MOAR Torches Mod
 
-Current Version: Version #1
+Current (Stable) Version: Version #14
 
 MinecraftForum Link: https://tinyurl.com/MattsMods
 
