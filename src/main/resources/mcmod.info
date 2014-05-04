@@ -1,0 +1,15 @@
+[
+{
+  "modid": "ExtraTorches",
+  "name": "ExtraTorches",
+  "description": "A Extra Torch Mod",
+  "mcversion": "${mcversion}",
+  "version": "${version}",
+  "logoFile": "/assets/extratorches/items/itemCreativeExtraTorches.png",
+  "url": "https://github.com/MattsMc/ExtraTorches",
+  "updateUrl": "",
+  "authors": ["MattsMc", "JustKayneNL"],
+  "credits": "Coded By: MattsMc, Textures Created By: JustKayneNL",
+  "dependencies": ["mod_MinecraftForge"]
+}
+]
