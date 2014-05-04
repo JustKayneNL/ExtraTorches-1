@@ -1,24 +1,11 @@
-<<<<<<< HEAD
 .gradle/
 .settings/
 bin/
 build/
 eclipse/
-gradle/
 .classpath
 .project
 
-=======
-.classpath
-.project
-bin/
-.settings/
-.settings
-build/
-eclipse/
-models/
-.gradle/
->>>>>>> 7ccf94f195c9edd5543a8e62f68a0cc709ec64b3
 
 
 
