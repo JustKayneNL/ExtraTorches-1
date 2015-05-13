@@ -3,110 +3,59 @@ package mattsmc.extratorches.common;
 import mattsmc.extratorches.creativetab.ExtraTorchesTab;
 import mattsmc.extratorches.mob.entity.EntityLightMob;
 import mattsmc.extratorches.proxy.CommonProxy;
-import mattsmc.extratorches.updater.CheckUpdate;
+import mattsmc.extratorches.utils.MobEgg;
 import mattsmc.extratorches.worldgen.ExtraTorchesGeneralWG;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraftforge.common.util.EnumHelper;
-import aroma1997.core.util.AromaRegistry;
-import cpw.mods.fml.common.IFuelHandler;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid = ExtraTorches.MODID, name = ExtraTorches.NAME, version = ExtraTorches.VERSION)
-public class ExtraTorches {
-	@SidedProxy(clientSide = "mattsmc.extratorches.proxy.ClientProxy", serverSide = "mattsmc.extratorches.proxy.CommonProxy")
-	public static CommonProxy proxy;
-	
-	public static final String MODID = "ExtraTorches";
-	public static final String NAME = "Extra Torches";
-	public static final String VERSION = "0.2";
-	
-	GameRegistry GR = new GameRegistry();
+@Mod(modid = ExtraTorches.MODID, name = ExtraTorches.NAME, version = ExtraTorches.VERSION) public class ExtraTorches {
+    @SidedProxy(clientSide = "mattsmc.extratorches.proxy.ClientProxy", serverSide = "mattsmc.extratorches.proxy.CommonProxy")
+    public static CommonProxy proxy;
 
-	public static ExtraTorchesGeneralWG worldgen1 = new ExtraTorchesGeneralWG();
+    public static final String VERSIONCHECKURL = "https://dl.dropboxusercontent.com/s/ikdkihilupoakjv/VersionCheck.xml?dl=1&token_hash=AAFLDyT8yNORamKMNZi8Ml_f7oIjTOmXRNxe-4884YtLew";
+    
+    public static final String MCVERSION = "MC172";
+    
+    public static final String MODID = "ExtraTorches";
+    public static final String NAME = "Extra Torches";
+    public static final String VERSION = "#14";
 
-	// Creative Tabs//
-	public static CreativeTabs ExtraTorchesTab = new ExtraTorchesTab(
-			"ExtraTorches");
+    public static ExtraTorchesGeneralWG worldgen1 = new ExtraTorchesGeneralWG();
 
-	@EventHandler
-	public void preInit(FMLPreInitializationEvent event) {
-		
-		EntityRegistry.registerGlobalEntityID(EntityLightMob.class, "mobLight",
-				300);
+    public static CreativeTabs ExtraTorchesTab = new ExtraTorchesTab(
+            "ExtraTorches");
 
-		EntityRegistry.addSpawn(EntityLightMob.class, 10, 2, 4,
-				EnumCreatureType.ambient);
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent event) {
+        Registry.load();
 
-		EntityRegistry.findGlobalUniqueEntityId();
+        FMLCommonHandler.instance().bus().register(new EventListener());
 
-		AromaRegistry.register(ExtraTorchesItems.class);
+        EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(EntityLightMob.class, "mobLight",
+                EntityRegistry.findGlobalUniqueEntityId());
+        EntityRegistry.addSpawn(EntityLightMob.class, 10, 2, 4,
+                EnumCreatureType.ambient);
+        MobEgg.registerEntityEgg(EntityLightMob.class, 0xFFCC00, 0xFFFF00);
 
-		GR.registerFuelHandler((IFuelHandler) ExtraTorchesItems.itemBetterCoal);
+        GameRegistry.registerWorldGenerator(worldgen1, 1);
+    }
 
-		GR.registerWorldGenerator(worldgen1, 1);
+    @EventHandler
+    public void init(FMLInitializationEvent event) {
+    }
 
-		// Recipes
-		// Crafting Recipes
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.torchIngotBlock, 1),
-				new Object[] { "XXX", "XXX", "XXX", 'X',
-						ExtraTorchesItems.itemTorchIngot });
-		GR.addShapelessRecipe(
-				new ItemStack(ExtraTorchesItems.itemTorchIngot, 9),
-				new Object[] { ExtraTorchesItems.torchIngotBlock });
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent event) {
 
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.betterCoalBlock, 1),
-				new Object[] { "XXX", "XXX", "XXX", 'X',
-						ExtraTorchesItems.itemBetterCoal });
-		GR.addShapelessRecipe(
-				new ItemStack(ExtraTorchesItems.itemBetterCoal, 9),
-				new Object[] { ExtraTorchesItems.betterCoalBlock });
-
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.itemTorchRod, 1),
-				new Object[] { "   ", " X ", " X ", 'X',
-						ExtraTorchesItems.itemTorchIngot });
-
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.itemExtraTorch, 2),
-				new Object[] { "   ", " S ", " X ", 'X',
-						ExtraTorchesItems.itemTorchRod, 'S',
-						ExtraTorchesItems.itemBetterCoal });
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.torchBlock, 1),
-				new Object[] { "XXX", "XXX", "XXX", 'X',
-						ExtraTorchesItems.itemExtraTorch });
-
-		GR.addShapelessRecipe(new ItemStack(ExtraTorchesItems.itemTorchNugget,
-				9), new Object[] { ExtraTorchesItems.itemTorchIngot });
-		
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.itemTorchIngot, 1),
-				new Object[] { "XXX", "XXX", "XXX", 'X',
-						ExtraTorchesItems.itemTorchNugget });
-
-		GR.addSmelting(new ItemStack(ExtraTorchesItems.itemTorchDust, 9),
-				new ItemStack(ExtraTorchesItems.itemTorchIngot, 1), 0);
-
-		GR.addRecipe(new ItemStack(ExtraTorchesItems.toolHandHeldTorch, 1),
-				new Object[] { "RS ", "SX ", "  X", 'X',
-						ExtraTorchesItems.itemTorchRod, 'S',
-						ExtraTorchesItems.torchIngotBlock, 'R',
-						ExtraTorchesItems.torchBlock });
-
-		// Smelting Recipes
-		GR.addSmelting(ExtraTorchesItems.betterCoalOre, new ItemStack(
-				ExtraTorchesItems.itemBetterCoal, 2), 5);
-		
-		GR.addSmelting(ExtraTorchesItems.itemTorchIngot, new ItemStack(
-				ExtraTorchesItems.oreTorchOre, 1), 10);
-		
-		String Update = CheckUpdate.checkUpdate();
-		System.out.println("ExtraTorches: " + Update);
-
-	}
-
+    }
 }

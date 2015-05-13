@@ -1,13 +1,11 @@
-.classpath
-.project
-bin/
+.gradle/
 .settings/
-.settings
+bin/
 build/
 eclipse/
-.gradle/
-gradle/
-gradlew
-gradlew.bat
+.classpath
+.project
+
+
 
 

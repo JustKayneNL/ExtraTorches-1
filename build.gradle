@@ -15,10 +15,16 @@ buildscript {
     }
 }
 
+ENV = System.getenv()
+
 apply plugin: 'forge'
 
-version = "1.0"
-group= "mattsmc.extratorches.common" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = "#14"
+
+if (ENV.BUILD_NUMBER)
+	version = "#${ENV.BUILD_NUMBER}"
+
+group= "mattsmc.extratorches" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ExtraTorches"
 
 minecraft {
